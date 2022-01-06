@@ -19,7 +19,7 @@ enum CalculatorError: Error {
     case zeroDivisor
 }
 
-enum CalculatorViewControllerError: Error {    
+enum CalculatorViewControllerError: Error {
     case emptyUIDigitsLabel
     case alreadyHaveADot
     case couldNotConvertToDouble

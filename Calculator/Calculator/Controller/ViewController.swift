@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var clearEntryButton: UIButton!    
     
     @IBOutlet weak var scrollStackView: UIStackView!
+    @IBOutlet weak var expressionsScrollView: UIScrollView!
     
     var calculator = Calculator()
     let numberFormatter = NumberFormatter()
@@ -226,11 +227,17 @@ extension ViewController {
         subview.addArrangedSubview(operatorLabel)
         subview.spacing = 4.0
         scrollStackView.addArrangedSubview(subview)
+        focusOnNewSubview()
     }
     func removeSubview() {
         for subview in scrollStackView.arrangedSubviews {
             subview.removeFromSuperview()
         }
+    }
+    func focusOnNewSubview() {
+        let contentHeight = expressionsScrollView.contentSize.height
+        let boundsHeight = expressionsScrollView.bounds.height
+        expressionsScrollView.setContentOffset(CGPoint(x: 0, y: contentHeight - boundsHeight), animated: true)
     }
     func updateUIDigitsLabel(_ text: String = "0") {
         userInputDigitsLabel.text = text
